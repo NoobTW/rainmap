@@ -17,13 +17,13 @@ function loadRainData(lat, lng){
 	// 取得資料
 
 	if(mychart) mychart.destroy();
-	$.getJSON('http://140.127.220.46:5002/api/NearWStation?location=' + lat + ',' + lng, (data) => {
+	$.getJSON('https://api-proxy.noob.tw/http://140.127.220.46:5002/api/NearWStation?location=' + lat + ',' + lng, (data) => {
 		if(data.length){
 			var stationName = Object.keys(data[0]);
 			var distance = Object.values(data[0])[0].slice(0, -3);
 
 			$('h2').html('來自 <span id="station">' + stationName + '</span>的觀測站資料（距離 ' + Math.floor(distance * 100) / 100 + ' km）')
-			$.getJSON('http://140.127.220.46:5002/api/RainFall?WS=' + stationName, (rainData) => {
+			$.getJSON('https://api-proxy.noob.tw/http://140.127.220.46:5002/api/RainFall?WS=' + stationName, (rainData) => {
 				rainData = rainData.filter(x => x[0].startsWith('2018'));
 
 				var rainsPerHour = [];
