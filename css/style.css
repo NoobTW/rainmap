@@ -3,3 +3,8 @@
 	width: 100vw;
 	height: 50vh;
 }
+
+#loading{
+	text-align: center;
+	display: none;
+}
